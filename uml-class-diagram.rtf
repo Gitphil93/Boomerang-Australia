@@ -1,0 +1,119 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 @startuml\
+\
+interface IPlayerClient \{\
+  +Card ChooseThrowCard(PlayerViewState state)\
+  +Card ChooseCatchCard(PlayerViewState state)\
+  +void ShowRoundResult(RoundResult result)\
+\}\
+\
+class ConsolePlayerClient implements IPlayerClient\
+class NetworkPlayerClient implements IPlayerClient\
+\
+interface IScoringRules \{\
+  +RoundScore CalculateRoundScore(RoundState state)\
+\}\
+\
+class AustraliaScoringRules implements IScoringRules\
+\
+interface IPassDirectionStrategy \{\
+  +int GetNextPlayerIndex(int currentIndex, int roundIndex, int playerCount)\
+\}\
+\
+class FixedLeftPassDirection implements IPassDirectionStrategy\
+class AlternatingPassDirection implements IPassDirectionStrategy\
+\
+interface IDeckService \{\
+  +List<Card> CreateShuffledDeck()\
+\}\
+\
+class DeckService implements IDeckService\
+\
+class GameEngine \{\
+  -List<Player> _players\
+  -IScoringRules _scoringRules\
+  -IPassDirectionStrategy _passDirection\
+  -IDeckService _deckService\
+  -IPlayerClient[] _clients\
+\
+  +RunGame()\
+  +RunRound(int roundIndex)\
+\}\
+\
+class Player \{\
+  -List<Card> Hand\
+  -List<Card> Draft\
+  -List<Card> PlayedCards\
+  -ScoreSheet ScoreSheet\
+\}\
+\
+class ScoreSheet \{\
+  +int TotalScore\
+  +int ThrowCatchScore\
+  +int RegionScore\
+  +int CollectionScore\
+  +int AnimalScore\
+  +int ActivityScore\
+\
+  +void Apply(RoundScore roundScore)\
+\}\
+\
+class Card \{\
+  +string Name\
+  +string Region\
+  +string SiteLetter\
+  +int ThrowValue\
+  +int CatchValue\
+  +string CollectionType\
+  +string AnimalType\
+  +string ActivityType\
+\}\
+\
+class RoundState \{\
+  +Player Player\
+  +List<Card> PlayedCards\
+  +List<Card> AllPlayerCards\
+  +int RoundIndex\
+\}\
+\
+class RoundScore \{\
+  +int Total\
+  +int ThrowCatch\
+  +int Regions\
+  +int Collections\
+  +int Animals\
+  +int Activities\
+\}\
+\
+class PlayerViewState \{\
+  +List<Card> Hand\
+  +int RoundIndex\
+\}\
+\
+GameEngine "1" o-- "*" Player\
+GameEngine "1" o-- "1" IScoringRules\
+GameEngine "1" o-- "1" IPassDirectionStrategy\
+GameEngine "1" o-- "1" IDeckService\
+GameEngine "1" o-- "*" IPlayerClient\
+\
+Player "1" o-- "1" ScoreSheet\
+Player "1" o-- "*" Card\
+RoundState "1" o-- "1" Player\
+RoundState "1" o-- "*" Card\
+RoundScore "1" <-- "1" ScoreSheet : Apply()\
+\
+IScoringRules <|.. AustraliaScoringRules\
+IPassDirectionStrategy <|.. FixedLeftPassDirection\
+IPassDirectionStrategy <|.. AlternatingPassDirection\
+IDeckService <|.. DeckService\
+IPlayerClient <|.. ConsolePlayerClient\
+IPlayerClient <|.. NetworkPlayerClient\
+\
+@enduml\
+}

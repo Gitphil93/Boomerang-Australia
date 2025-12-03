@@ -1,0 +1,254 @@
+[
+  {
+    "name": "The Bungle Bungles",
+    "site": "A",
+    "region": "Western Australia",
+    "number": 1,
+    "collection": "Leaves",
+    "animal": null,
+    "activity": "Indigenous Culture"
+  },
+  {
+    "name": "The Pinnacles",
+    "site": "B",
+    "region": "Western Australia",
+    "number": 1,
+    "collection": null,
+    "animal": "Kangaroos",
+    "activity": "Sightseeing"
+  },
+  {
+    "name": "Margaret River",
+    "site": "C",
+    "region": "Western Australia",
+    "number": 1,
+    "collection": "Shells",
+    "animal": "Kangaroos",
+    "activity": null
+  },
+  {
+    "name": "Kalbarri National Park",
+    "site": "D",
+    "region": "Western Australia",
+    "number": 1,
+    "collection": "Wildflowers",
+    "animal": null,
+    "activity": "Bushwalking"
+  },
+  {
+    "name": "Uluru",
+    "site": "E",
+    "region": "Northern Territory",
+    "number": 4,
+    "collection": null,
+    "animal": "Emus",
+    "activity": "Indigenous Culture"
+  },
+  {
+    "name": "Kakadu National Park",
+    "site": "F",
+    "region": "Northern Territory",
+    "number": 4,
+    "collection": "Leaves",
+    "animal": "Wallabies",
+    "activity": null
+  },
+  {
+    "name": "Katherine Gorge",
+    "site": "G",
+    "region": "Northern Territory",
+    "number": 4,
+    "collection": "Shells",
+    "animal": null,
+    "activity": "Bushwalking"
+  },
+  {
+    "name": "Great Barrier Reef",
+    "site": "H",
+    "region": "Queensland",
+    "number": 3,
+    "collection": "Shells",
+    "animal": "Fish",
+    "activity": "Swimming"
+  },
+  {
+    "name": "The Daintree",
+    "site": "I",
+    "region": "Queensland",
+    "number": 3,
+    "collection": "Leaves",
+    "animal": null,
+    "activity": "Bushwalking"
+  },
+  {
+    "name": "The Whitsunday Islands",
+    "site": "J",
+    "region": "Queensland",
+    "number": 3,
+    "collection": null,
+    "animal": "Fish",
+    "activity": "Swimming"
+  },
+  {
+    "name": "Fraser Island",
+    "site": "K",
+    "region": "Queensland",
+    "number": 3,
+    "collection": "Wildflowers",
+    "animal": "Kangaroos",
+    "activity": "Swimming"
+  },
+  {
+    "name": "Noosa",
+    "site": "L",
+    "region": "Queensland",
+    "number": 3,
+    "collection": null,
+    "animal": null,
+    "activity": "Swimming"
+  },
+  {
+    "name": "Canberra",
+    "site": "M",
+    "region": "Australian Capital Territory",
+    "number": 2,
+    "collection": "Leaves",
+    "animal": "Wallabies",
+    "activity": "Indigenous Culture"
+  },
+  {
+    "name": "Sydney",
+    "site": "N",
+    "region": "New South Wales",
+    "number": 2,
+    "collection": "Wildflowers",
+    "animal": "Kangaroos",
+    "activity": "Sightseeing"
+  },
+  {
+    "name": "The Snowy Mountains",
+    "site": "O",
+    "region": "New South Wales",
+    "number": 2,
+    "collection": "Leaves",
+    "animal": "Kangaroos",
+    "activity": "Bushwalking"
+  },
+  {
+    "name": "Byron Bay",
+    "site": "P",
+    "region": "New South Wales",
+    "number": 2,
+    "collection": null,
+    "animal": "Fish",
+    "activity": "Swimming"
+  },
+  {
+    "name": "The Gold Coast",
+    "site": "Q",
+    "region": "Queensland",
+    "number": 3,
+    "collection": null,
+    "animal": null,
+    "activity": "Swimming"
+  },
+  {
+    "name": "Melbourne",
+    "site": "R",
+    "region": "Victoria",
+    "number": 5,
+    "collection": "Wildflowers",
+    "animal": null,
+    "activity": "Sightseeing"
+  },
+  {
+    "name": "The Great Ocean Road",
+    "site": "S",
+    "region": "Victoria",
+    "number": 5,
+    "collection": "Shells",
+    "animal": "Kangaroos",
+    "activity": "Bushwalking"
+  },
+  {
+    "name": "The Grampians",
+    "site": "T",
+    "region": "Victoria",
+    "number": 5,
+    "collection": "Leaves",
+    "animal": "Kangaroos",
+    "activity": "Indigenous Culture"
+  },
+  {
+    "name": "Kangaroo Island",
+    "site": "U",
+    "region": "South Australia",
+    "number": 6,
+    "collection": "Shells",
+    "animal": "Kangaroos",
+    "activity": "Swimming"
+  },
+  {
+    "name": "The Flinders Ranges",
+    "site": "V",
+    "region": "South Australia",
+    "number": 6,
+    "collection": "Leaves",
+    "animal": "Emus",
+    "activity": "Bushwalking"
+  },
+  {
+    "name": "Cradle Mountain",
+    "site": "W",
+    "region": "Tasmania",
+    "number": 7,
+    "collection": "Leaves",
+    "animal": null,
+    "activity": "Bushwalking"
+  },
+  {
+    "name": "Freycinet Peninsula",
+    "site": "X",
+    "region": "Tasmania",
+    "number": 7,
+    "collection": "Shells",
+    "animal": "Fish",
+    "activity": "Swimming"
+  },
+  {
+    "name": "Hobart",
+    "site": "Y",
+    "region": "Tasmania",
+    "number": 7,
+    "collection": "Wildflowers",
+    "animal": null,
+    "activity": "Sightseeing"
+  },
+  {
+    "name": "The Murray River",
+    "site": "Z",
+    "region": "New South Wales, Victoria, South Australia",
+    "number": 8,
+    "collection": "Leaves",
+    "animal": "Kangaroos",
+    "activity": "Swimming"
+  },
+  {
+    "name": "The Outback",
+    "site": "AA",
+    "region": "Northern Territory, South Australia, Western Australia, Queensland, New South Wales",
+    "number": 9,
+    "collection": "Leaves",
+    "animal": "Emus",
+    "activity": "Bushwalking"
+  },
+  {
+    "name": "The Coral Sea",
+    "site": "AB",
+    "region": "Queensland",
+    "number": 3,
+    "collection": "Shells",
+    "animal": "Fish",
+    "activity": "Swimming"
+  }
+]

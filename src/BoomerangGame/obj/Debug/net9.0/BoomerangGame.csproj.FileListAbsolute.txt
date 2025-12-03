@@ -1,0 +1,16 @@
+C:\Users\phlup\Documents\GitHub\Boomerang-Australia\src\BoomerangGame\bin\Debug\net9.0\BoomerangGame.exe
+C:\Users\phlup\Documents\GitHub\Boomerang-Australia\src\BoomerangGame\bin\Debug\net9.0\BoomerangGame.deps.json
+C:\Users\phlup\Documents\GitHub\Boomerang-Australia\src\BoomerangGame\bin\Debug\net9.0\BoomerangGame.runtimeconfig.json
+C:\Users\phlup\Documents\GitHub\Boomerang-Australia\src\BoomerangGame\bin\Debug\net9.0\BoomerangGame.dll
+C:\Users\phlup\Documents\GitHub\Boomerang-Australia\src\BoomerangGame\bin\Debug\net9.0\BoomerangGame.pdb
+C:\Users\phlup\Documents\GitHub\Boomerang-Australia\src\BoomerangGame\obj\Debug\net9.0\BoomerangGame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\phlup\Documents\GitHub\Boomerang-Australia\src\BoomerangGame\obj\Debug\net9.0\BoomerangGame.AssemblyInfoInputs.cache
+C:\Users\phlup\Documents\GitHub\Boomerang-Australia\src\BoomerangGame\obj\Debug\net9.0\BoomerangGame.AssemblyInfo.cs
+C:\Users\phlup\Documents\GitHub\Boomerang-Australia\src\BoomerangGame\obj\Debug\net9.0\BoomerangGame.csproj.CoreCompileInputs.cache
+C:\Users\phlup\Documents\GitHub\Boomerang-Australia\src\BoomerangGame\obj\Debug\net9.0\BoomerangGame.sourcelink.json
+C:\Users\phlup\Documents\GitHub\Boomerang-Australia\src\BoomerangGame\obj\Debug\net9.0\BoomerangGame.dll
+C:\Users\phlup\Documents\GitHub\Boomerang-Australia\src\BoomerangGame\obj\Debug\net9.0\refint\BoomerangGame.dll
+C:\Users\phlup\Documents\GitHub\Boomerang-Australia\src\BoomerangGame\obj\Debug\net9.0\BoomerangGame.pdb
+C:\Users\phlup\Documents\GitHub\Boomerang-Australia\src\BoomerangGame\obj\Debug\net9.0\BoomerangGame.genruntimeconfig.cache
+C:\Users\phlup\Documents\GitHub\Boomerang-Australia\src\BoomerangGame\obj\Debug\net9.0\ref\BoomerangGame.dll
+C:\Users\phlup\Documents\GitHub\Boomerang-Australia\src\BoomerangGame\bin\Debug\net9.0\Data\cards_australia.json

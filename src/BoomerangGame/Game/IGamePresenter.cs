@@ -3,8 +3,11 @@ using Boomerang.Domain;
 
 namespace Boomerang.Game
 {
-    public interface IGameResultsPresenter
+    public interface IGamePresenter
     {
+        void ShowGameStart(int playerCount);
+        void ShowRoundStart(int roundIndex);
         void ShowFinalResults(List<Player> players, List<Player> winners);
+      
     }
 }

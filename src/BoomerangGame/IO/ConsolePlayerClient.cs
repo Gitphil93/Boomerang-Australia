@@ -17,7 +17,7 @@ public class ConsolePlayerClient : IPlayerClient
     public Card ChooseThrowCard(PlayerViewState state)
     {
         Console.WriteLine();
-        Console.WriteLine($"{_player.Name}, choose a card to THROW (this will be hidden until end of round):");
+        Console.WriteLine($"{_player.Name}, choose a card to THROW:");
         PrintHand(state.Hand);
 
         int index = AskCardIndex(state.Hand.Count);

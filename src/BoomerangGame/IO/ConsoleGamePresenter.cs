@@ -6,8 +6,22 @@ using Boomerang.Game;
 
 namespace Boomerang.IO
 {
-    public class ConsoleGameResultsPresenter : IGameResultsPresenter
+    public class ConsoleGamePresenter : IGamePresenter
     {
+
+        public void ShowGameStart(int playerCount)
+        {
+            Console.WriteLine("Starting Boomerang: Australia!");
+            Console.WriteLine($"Players: {playerCount}");
+            Console.WriteLine();
+        }
+
+        public void ShowRoundStart(int roundIndex)
+        {
+            Console.WriteLine();
+            Console.WriteLine($"----- ROUND {roundIndex} -----");
+        }
+
         public void ShowFinalResults(List<Player> players, List<Player> winners)
         {
             Console.WriteLine("\n===== FINAL SCORES =====");

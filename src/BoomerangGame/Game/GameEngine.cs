@@ -17,21 +17,24 @@ public class GameEngine
     private readonly IPassDirectionStrategy _passDirection;
     private readonly IDeckService _deckService;
     private readonly IPlayerClient[] _clients;
-    private readonly IGameResultsPresenter _resultsPresenter;
+    private readonly IGamePresenter _presenter;
+    private readonly GameConfig _config;
     public GameEngine(
         List<Player> players,
         IPlayerClient[] clients,
         IDeckService deckService,
         IScoringRules scoringRules,
         IPassDirectionStrategy passDirection,
-        IGameResultsPresenter resultsPresenter)
+        IGamePresenter presenter,
+        GameConfig config)
     {
         _players = players;
         _clients = clients;
         _deckService = deckService;
         _scoringRules = scoringRules;
         _passDirection = passDirection;
-        _resultsPresenter = resultsPresenter;
+        _presenter = presenter;
+        _config = config;
     }
 
     //1. Shuffle card
@@ -44,20 +47,20 @@ public class GameEngine
     //9. Final card is passed to previous player
     public void RunGame()
     {
-        Console.WriteLine("Starting Boomerang game...");
+        _presenter.ShowGameStart(_players.Count);
 
-        for (int round = 0; round < 4; round++) 
+        for (int round = 0; round < _config.Rounds; round++) 
         {
             RunRound(round);
         }
         var final = CalculateFinalResults();
-        _resultsPresenter.ShowFinalResults(final.Players, final.Winners);
+        _presenter.ShowFinalResults(final.Players, final.Winners);
     }
 
 
     public void RunRound(int roundIndex)
     {
-        Console.WriteLine($"\n-----ROUND {roundIndex + 1}-----");
+        _presenter.ShowRoundStart(roundIndex + 1);
 
         var deck = _deckService.CreateShuffledDeck();
 
@@ -78,18 +81,18 @@ public class GameEngine
         {
             player.Hand.Clear();
             player.PlayedCards.Clear();
-            player.Draft.Clear(); // om du använder den
+            player.Draft.Clear(); // om den används?
         }
     }
 
     private void DealHands(List<Card> deck)
     {
-        const int cardsPerPlayer = 7;
+        
         int deckIndex = 0;
 
         foreach (var player in _players)
         {
-            for (int j = 0; j < cardsPerPlayer; j++)
+            for (int j = 0; j < _config.CardsPerPlayer; j++)
             {
                 if (deckIndex >= deck.Count)
                     throw new InvalidOperationException("Deck ran out of cards.");
@@ -141,6 +144,8 @@ public class GameEngine
                 if (hand.Count == 0)
                     throw new InvalidOperationException("Hand empty during drafting.");
 
+
+                //ändra så att spelaren väljer kort själv?
                 // enkel strategi: ta första kortet
                 var chosen = hand[0];
                 hand.RemoveAt(0);

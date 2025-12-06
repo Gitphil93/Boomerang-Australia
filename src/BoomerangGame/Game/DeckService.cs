@@ -6,22 +6,24 @@ namespace Boomerang.Game;
 
 public class DeckService : IDeckService
 {
-    private readonly List<Card> _allCards;
+    private readonly ICardRepository _repo;
 
-    public DeckService(string jsonPath)
+    public DeckService(ICardRepository repo)
     {
-        _allCards = CardRepository.LoadFromJson(jsonPath);
+        _repo = repo;
     }
 
     public List<Card> CreateShuffledDeck()
     {
-        var deck = new List<Card>(_allCards);
+        var deck = _repo.LoadAll();
         var rng = new Random();
+
         for (int i = deck.Count - 1; i > 0; i--)
         {
             int j = rng.Next(i + 1);
             (deck[i], deck[j]) = (deck[j], deck[i]);
         }
+
         return deck;
     }
 }

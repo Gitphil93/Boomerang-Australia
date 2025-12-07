@@ -2,6 +2,10 @@ using System.Collections.Generic;
 
 namespace Boomerang.Domain;
 
+/// <summary>
+/// Data needed to score one round.
+/// </summary>
+
 public class RoundState
 {
     public Player Player { get; }

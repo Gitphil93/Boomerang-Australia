@@ -1,6 +1,11 @@
 ﻿using System.Collections.Generic;
 using Boomerang.Domain;
 
+/// <summary>
+/// Holds final results and winners.
+/// </summary>
+
+
 namespace Boomerang.Game
 {
     public class GameResult

@@ -1,5 +1,10 @@
 namespace Boomerang.Domain;
 
+
+/// <summary>
+/// Score result for a single round.
+/// </summary>
+
 public class RoundScore
 {
     public int ThrowCatch { get; set; }

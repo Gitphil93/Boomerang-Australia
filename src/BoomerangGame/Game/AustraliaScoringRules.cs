@@ -5,6 +5,10 @@ using Boomerang.Domain;
 
 namespace Boomerang.Game;
 
+/// <summary>
+/// Scoring rules for the Australia edition.
+/// </summary>
+
 public class AustraliaScoringRules : IScoringRules
 {
     public RoundScore CalculateRoundScore(RoundState state)
@@ -23,7 +27,6 @@ public class AustraliaScoringRules : IScoringRules
         int animals = CalculateAnimals(cards);
         int activities = CalculateActivities(player, cards);
 
-        // Total är read-only, räknas automatiskt i RoundScore
         return new RoundScore
         {
             ThrowCatch = throwCatch,
@@ -34,17 +37,15 @@ public class AustraliaScoringRules : IScoringRules
         };
     }
 
-    // 10a) Throw & Catch = |Throw - Catch|
     private static int CalculateThrowCatch(IReadOnlyList<Card> cards)
     {
         var throwCard = cards[0];
         var catchCard = cards[^1];
-
-        // Antag att JSON:ens "number" mappas till ThrowValue (och ev. även CatchValue)
+       
         return Math.Abs(throwCard.ThrowValue - catchCard.ThrowValue);
     }
 
-    // 10b) Tourist sites + enkel regionbonus
+
     private static int CalculateRegions(Player player, IReadOnlyList<Card> cards)
     {
         int siteScore = 0;
@@ -53,7 +54,7 @@ public class AustraliaScoringRules : IScoringRules
         {
             if (!string.IsNullOrWhiteSpace(card.SiteLetter))
             {
-                // +1 första gången spelaren ser denna site under hela spelet
+
                 if (player.VisitedSites.Add(card.SiteLetter))
                 {
                     siteScore++;
@@ -61,8 +62,6 @@ public class AustraliaScoringRules : IScoringRules
             }
         }
 
-        // Enkel regionbonus: om en spelare i denna runda har minst 4 olika sites
-        // i samma region och inte redan fått bonus för den regionen → +3
         int regionBonus = 0;
 
         var byRegionThisRound = cards
@@ -90,8 +89,6 @@ public class AustraliaScoringRules : IScoringRules
         return siteScore + regionBonus;
     }
 
-    // 10c) Collections: Leaves=1, Wildflowers=2, Shells=3, Souvenirs=5
-    // Summa 1–7 → dubbla, >7 → bara summan
     private static int CalculateCollections(IReadOnlyList<Card> cards)
     {
         int total = 0;
@@ -121,7 +118,6 @@ public class AustraliaScoringRules : IScoringRules
         return total <= 7 ? total * 2 : total;
     }
 
-    // 10d) Animals: poäng per PAR
     private static int CalculateAnimals(IReadOnlyList<Card> cards)
     {
         var counts = cards
@@ -155,8 +151,6 @@ public class AustraliaScoringRules : IScoringRules
         return score;
     }
 
-    // 10e) Activities: välj bästa aktivitet denna runda,
-    // score: 1→0, 2→2, 3→4, 4→7, 5→10, 6→15. Varje aktivitet max en gång per game.
     private static int CalculateActivities(Player player, IReadOnlyList<Card> cards)
     {
         var counts = cards
@@ -175,7 +169,6 @@ public class AustraliaScoringRules : IScoringRules
             string activity = kvp.Key;
             int count = kvp.Value;
 
-            // får bara score:a en aktivitet en gång per game
             if (player.ScoredActivities.Contains(activity))
                 continue;
 

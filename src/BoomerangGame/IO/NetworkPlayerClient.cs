@@ -2,6 +2,10 @@ using System;
 using Boomerang.Domain;
 using Boomerang.Domain;
 
+/// <summary>
+/// Placeholder for future network-based player interaction.
+/// </summary>
+
 namespace Boomerang.IO;
 
 public class NetworkPlayerClient : IPlayerClient

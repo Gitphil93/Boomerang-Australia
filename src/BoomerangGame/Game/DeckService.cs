@@ -4,6 +4,10 @@ using Boomerang.Domain;
 
 namespace Boomerang.Game;
 
+/// <summary>
+/// Loads, creates and shuffles the deck.
+/// </summary>
+
 public class DeckService : IDeckService
 {
     private readonly ICardRepository _repo;

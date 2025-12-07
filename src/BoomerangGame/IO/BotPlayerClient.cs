@@ -2,6 +2,10 @@
 using System.Linq;
 using Boomerang.Domain;
 
+/// <summary>
+/// Automated player logic.
+/// </summary>
+
 namespace Boomerang.IO;
 
 public class BotPlayerClient : IPlayerClient
@@ -16,7 +20,7 @@ public class BotPlayerClient : IPlayerClient
 
     public Card ChooseThrowCard(PlayerViewState state)
     {
-        //  välj det kort med högst ThrowValue
+        //  välj koret med högst throw value
         var best = state.Hand
             .OrderByDescending(c => c.ThrowValue)
             .First();
@@ -24,7 +28,7 @@ public class BotPlayerClient : IPlayerClient
         Console.WriteLine();
         Console.WriteLine($"{_player.Name} (bot) is choosing a Throw card...");
         System.Threading.Thread.Sleep(1000);
-        // Vi visar inte vilket kort innan rundan är slut
+        
 
         return best;
     }
@@ -32,7 +36,6 @@ public class BotPlayerClient : IPlayerClient
     public Card ChooseCatchCard(PlayerViewState state)
     {
         // Används egentligen inte, styrs av sista kortet i GameEngine
-        // men vi returnerar bara första kortet för säkerhets skull
         return state.Hand.First();
     }
 

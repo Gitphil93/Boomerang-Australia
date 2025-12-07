@@ -1,5 +1,9 @@
 namespace Boomerang.Game;
 
+/// <summary>
+/// Alternates pass direction between rounds.
+/// </summary>
+
 public class AlternatingPassDirection : IPassDirectionStrategy
 {
     public int GetNextPlayerIndex(int currentIndex, int roundIndex, int playerCount)

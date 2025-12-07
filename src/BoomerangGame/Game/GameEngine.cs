@@ -5,8 +5,10 @@ using Boomerang.Domain;
 using Boomerang.IO;
 using Boomerang.Game;
 
-// GameEngine ansvarar för game flow (deal/draft/catch/score)
-// men använder dedikerade tjänster (IDeckService, IScoringRules, IPassDirectionStrategy, IPlayerClient)
+/// <summary>
+/// Orchestrates game flow and uses dependencies to run a complete game
+/// </summary>
+
 
 namespace Boomerang.Game;
 
@@ -37,14 +39,7 @@ public class GameEngine
         _config = config;
     }
 
-    //1. Shuffle card
-    //2. Deal 7 cards
-    //3. Choose cards to throw
-    //4. Show Throwed cards to other players at end of round
-    //5. Pass remaining cards to to next player
-    //6. Show one card from new hand to other players
-    //8. continue 5 & 6 til only 1 card on hand and show all selected to other players
-    //9. Final card is passed to previous player
+ 
     public void RunGame()
     {
         _presenter.ShowGameStart(_players.Count);
@@ -69,7 +64,7 @@ public class GameEngine
         ChooseThrowCards(roundIndex);
 
         var hands = CreatePassingHandsSnapshot();
-        // ShowCard();
+      
         RunDraftLoop(roundIndex, hands);
         ApplyCatchCards(roundIndex, hands);
 
@@ -81,7 +76,7 @@ public class GameEngine
         {
             player.Hand.Clear();
             player.PlayedCards.Clear();
-            player.Draft.Clear(); // om den används?
+            player.Draft.Clear();
         }
     }
 
@@ -110,7 +105,7 @@ public class GameEngine
 
             var view = new PlayerViewState
             {
-                Hand = player.Hand.ToList(), // kopia
+                Hand = player.Hand.ToList(), 
                 RoundIndex = roundIndex
             };
 
@@ -119,12 +114,12 @@ public class GameEngine
             if (!player.Hand.Remove(throwCard))
                 throw new InvalidOperationException("Chosen throw card was not in player's hand.");
 
-            player.PlayedCards.Add(throwCard); // position 0 = Throw
+            player.PlayedCards.Add(throwCard);
         }
     }
     private List<List<Card>> CreatePassingHandsSnapshot()
     {
-        // Vi jobbar vidare på separata listor som passas runt
+        
         return _players
             .Select(p => new List<Card>(p.Hand))
             .ToList();
@@ -132,10 +127,10 @@ public class GameEngine
 
     private void RunDraftLoop(int roundIndex, List<List<Card>> hands)
     {
-        // vi draftar tills varje hand har 1 kort kvar
+        
         while (true)
         {
-            // 1) alla spelare väljer ett kort ur sin nuvarande hand
+            
             var draftedThisStep = new Card[_players.Count];
 
             for (int i = 0; i < _players.Count; i++)
@@ -145,24 +140,22 @@ public class GameEngine
                     throw new InvalidOperationException("Hand empty during drafting.");
 
 
-                //ändra så att spelaren väljer kort själv?
-                // enkel strategi: ta första kortet
                 var chosen = hand[0];
                 hand.RemoveAt(0);
                 draftedThisStep[i] = chosen;
             }
 
-            // 2) lägg till draftade kort i respektive spelares PlayedCards
+           
             for (int i = 0; i < _players.Count; i++)
             {
                 _players[i].PlayedCards.Add(draftedThisStep[i]);
             }
 
-            // 3) om alla har exakt 1 kort kvar → break (dags för Catch)
+         
             if (hands.All(h => h.Count == 1))
                 break;
 
-            // 4) annars: passera händerna enligt passDirection
+           
             hands = PassHands(roundIndex, hands);
         }
     }
@@ -201,10 +194,10 @@ public class GameEngine
 
         for (int i = 0; i < _players.Count; i++)
         {
-            _players[i].PlayedCards.Add(catchCards[i]); // sista kortet = Catch
+            _players[i].PlayedCards.Add(catchCards[i]);
         }
 
-        // sanity check: alla ska ha exakt 7 spelade kort
+     
         foreach (var player in _players)
         {
             if (player.PlayedCards.Count != 7)
@@ -222,7 +215,7 @@ public class GameEngine
 
             var roundState = new RoundState(
                 player,
-                player.PlayedCards.ToList(), // exakt 7 kort
+                player.PlayedCards.ToList(),
                 allCardsThisRound,
                 roundIndex
             );
@@ -251,7 +244,7 @@ public class GameEngine
 
     private int GetPreviousPlayerIndex(int currentIndex, int roundIndex)
     {
-        // invers av passDirection
+       
         for (int i = 0; i < _players.Count; i++)
         {
             int next = _passDirection.GetNextPlayerIndex(i, roundIndex, _players.Count);
@@ -259,7 +252,7 @@ public class GameEngine
                 return i;
         }
 
-        // fallback om strategin är trivial
+      
         return (currentIndex - 1 + _players.Count) % _players.Count;
     }
 }

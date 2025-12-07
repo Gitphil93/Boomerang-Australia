@@ -1,5 +1,9 @@
 namespace Boomerang.Domain;
 
+/// <summary>
+/// Tracks all round scores and totals for a player.
+/// </summary>
+
 public class ScoreSheet
 {
     public int ThrowCatchScore { get; set; }

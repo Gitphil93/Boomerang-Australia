@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Boomerang.Domain;
 
+/// <summary>
+/// Console-based player interaction.
+/// </summary>
+
+
 namespace Boomerang.IO;
 
 public class ConsolePlayerClient : IPlayerClient
@@ -24,8 +29,6 @@ public class ConsolePlayerClient : IPlayerClient
         return state.Hand[index];
     }
 
-    // Just nu används inte denna i flödet (catch bestäms av sista kortet),
-    // men vi behåller den för framtida varianter.
     public Card ChooseCatchCard(PlayerViewState state)
     {
         return state.Hand.First();
